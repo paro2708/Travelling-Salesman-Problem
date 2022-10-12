@@ -10,7 +10,6 @@ public class Point {
         this.x = x;
         this.y = y;
     }
-
     void setName(int a) {
         this.name = a;
     }

@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
  *
  * @author Ananth R
  * @author Paromita R
- * @author Danish
+ * @author Danish K
  * @Author Chaitanya K
  */
 public class App implements Runnable {
@@ -30,12 +30,12 @@ public class App implements Runnable {
      * @param matrix Contains the distances in matrix format
      */
     public static Runnable tspTask(double matrix[][]) {
-        List<Integer> Path = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
         TSPGreedy solver = new TSPGreedy(matrix, startingCity);
         double x = solver.findMinRoute();
         System.out.println("Tour: " + x);
-        Path = solver.getMinRoute();
-        for (int city : Path) {
+        path = solver.getMinRoute();
+        for (int city : path) {
 
             // SHOW IN JPANEL ::::::: ::::::
             System.out.print(" city:" + city + " =>");
@@ -66,7 +66,7 @@ public class App implements Runnable {
     }
 
     /**
-     * This decides whether the graph is symmetrical or asymmetrical. It is done by
+     * This method decides whether the graph is symmetrical or asymmetrical. It is done by
      * looking at the file extension. Based on the data, the matrix is formed accordingly.
      */
     @Override
@@ -99,7 +99,7 @@ public class App implements Runnable {
     public static void main(String[] args) throws IOException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         int MAX_EXECUTION_TIME = 300;
-        fileName = "ar9152.tsp";
+        fileName = "rbg443.atsp";
         Future future = executor.submit(new App());
         try {
             future.get(MAX_EXECUTION_TIME, TimeUnit.SECONDS);

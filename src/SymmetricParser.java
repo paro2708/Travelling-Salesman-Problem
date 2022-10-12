@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
  * This class parses the symmetric data and converts it into a 2D distance matrix.
  */
 public class SymmetricParser {
-
     public static Map<Integer, Point> points; // map of points
     public static ArrayList<ArrayList<Double>> finalArray = new ArrayList<ArrayList<Double>>();
 
