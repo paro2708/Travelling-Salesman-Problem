@@ -44,7 +44,7 @@ public class App implements Runnable {
     }
 
     /**
-     * DO WE NEED THIS FUNCTION SINCE WE ARE PASSING IT AS AN ARGUMENT IN THE NEXT FUNCTION
+     * Fetches the content of the file and creates a list out of it.
      * @param fileName
      * @return List<String> Containing the contents of the file
      */
