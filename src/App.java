@@ -23,23 +23,31 @@ import java.util.concurrent.TimeoutException;
 public class App implements Runnable {
     static String fileName;
     static int startingCity = 0;
-
+    static List<Integer> path = new ArrayList<>();
+    static String finalPath = "";
     /**
      * The main TSP logic is called from here. A 2D matrix containing the cities and
      * their distances, is sent as an input.
      * @param matrix Contains the distances in matrix format
      */
     public static Runnable tspTask(double matrix[][]) {
-        List<Integer> path = new ArrayList<>();
+        
         TSPGreedy solver = new TSPGreedy(matrix, startingCity);
         double x = solver.findMinRoute();
         System.out.println("Tour: " + x);
         path = solver.getMinRoute();
         for (int city : path) {
-
             // SHOW IN JPANEL ::::::: ::::::
-            System.out.print(" city:" + city + " =>");
+            finalPath += city + "=>";
         }
+        System.out.print(finalPath);
+        SymmetricParser sp = null;
+		try {
+			sp = new SymmetricParser(fileName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        sp.showPoints(finalPath);
         return null;
     }
 
@@ -98,8 +106,8 @@ public class App implements Runnable {
      */
     public static void main(String[] args) throws IOException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        int MAX_EXECUTION_TIME = 300;
-        fileName = "rbg443.atsp";
+        int MAX_EXECUTION_TIME = 10;
+        fileName = "zi929.tsp";
         Future future = executor.submit(new App());
         try {
             future.get(MAX_EXECUTION_TIME, TimeUnit.SECONDS);
@@ -108,7 +116,9 @@ public class App implements Runnable {
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            System.exit(0);
+//        	System.exit(0);
+        	executor.shutdown();
         }
+        
     }
 }
