@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,15 +32,17 @@ public class SymmetricParser {
                 points.put(p.name, p);
             }
         }
-        showPoints();
+//        showPoints();
     }
 
     /**
      * This function calls the GUI class to plot the symmetric data onto the UI.
+     * @param finalPath 
      */
-    public void showPoints() {
+    public void showPoints(String finalPath) {
+    	System.out.println("++++++" + finalPath);
         GUI x = new GUI(points);
-        x.utilDraw();
+        x.utilDraw(finalPath);
     }
 
     /**
