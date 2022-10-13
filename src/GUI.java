@@ -1,7 +1,16 @@
-import java.awt.*;
-import javax.swing.*;
-import java.awt.geom.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * This class contains all the UI elements. It takes the X and Y coordinates from the
@@ -67,10 +76,14 @@ public class GUI extends JPanel {
 
     /**
      * This function initializes the panel or canvas for plotting the coordinates.
+     * @param path 
      */
-    public void utilDraw() {
+    public void utilDraw(String finalPath) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.add(new JLabel(finalPath), BorderLayout.CENTER);
+        frame.pack();
         frame.add(new GUI(points));
         frame.setSize(1000, 1000);
         frame.setLocation(200, 200);
